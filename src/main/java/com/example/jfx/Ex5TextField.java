@@ -1,6 +1,10 @@
 package com.example.jfx;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -8,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.EventListener;
@@ -25,7 +30,12 @@ public class Ex5TextField extends Application {
 
         tF = new TextField();
         tF.setMaxWidth(250);
-        tF.setText("Write something here ...");
+        tF.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println(t1);
+            }
+        });
 
         VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
@@ -38,6 +48,5 @@ public class Ex5TextField extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
 }
