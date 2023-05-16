@@ -1,18 +1,21 @@
 package com.example.jfx;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Ex2 extends Application {
+import java.security.Key;
 
+public class Ex4 extends Application {
     Label labH, labF;
     Text tH, tF;
     Button btnH, btnF, btnReset;
@@ -59,16 +62,24 @@ public class Ex2 extends Application {
         root.setSpacing(20);
         root.getChildren().addAll(labBox, resBox, btnBox);
         root.setAlignment(Pos.CENTER);
+        root.setOnKeyPressed(e -> keyAction(e));
+        root.requestFocus();
 
 
 
         Scene scene = new Scene(root, 320, 240);
 
-        primaryStage.setTitle("Exercice 2");
+        primaryStage.setTitle("Exercice 4");
         primaryStage.setScene(scene);
         primaryStage.show();
 
 
+    }
+
+    private void keyAction(KeyEvent kE) {
+        KeyCode code = kE.getCode();
+        if (code.getCode() == 49 || code.getCode() == 97)clickButt(tH);
+        if (code.getCode() == 50 || code.getCode() == 98)clickButt(tF);
     }
 
     private void clickReset() {
